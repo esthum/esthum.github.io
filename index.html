@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,15 +37,7 @@
     .site-nav a { color: var(--muted); text-decoration: none; font-size: .87rem; font-weight: 550; }
     .site-nav a:hover, .site-nav a:focus-visible { color: var(--accent-dark); }
     .hero { padding: clamp(5rem, 10vw, 8.3rem) 0 6rem; position: relative; overflow: hidden; }
-    /* Dominica landscape: dark overlay keeps the heading legible. */
-    .hero { background: linear-gradient(90deg, rgba(12, 38, 40, .89) 0%, rgba(12, 38, 40, .72) 53%, rgba(12, 38, 40, .42) 100%), url("dominica-landscape.jpg") center 52% / cover no-repeat; color: #fff; }
-    .hero::after { display: none; }
-    .hero .eyebrow { color: #c8e0dc; }
-    .hero .intro { color: #f0f6f4; }
-    .hero .text-link { color: #f0f6f4; }
-    .hero .text-link:hover { color: white; }
-    .hero .button { background: #f4f9f6; border-color: #f4f9f6; color: #173d40; }
-    .hero .button:hover { background: #fff; color: #173d40; }
+    .hero::after { content: ""; position: absolute; pointer-events: none; width: 35rem; height: 35rem; border: 1px solid #d5e3da; border-radius: 50%; right: -16rem; top: -18rem; box-shadow: 0 0 0 80px rgba(223,236,228,.22), 0 0 0 160px rgba(223,236,228,.12); z-index: 0; }
     .hero .wrap { position: relative; z-index: 1; }
     .eyebrow, .section-kicker { color: var(--accent); font-size: .75rem; font-weight: 750; letter-spacing: .155em; text-transform: uppercase; }
     .eyebrow { margin: 0 0 1.35rem; }
@@ -54,7 +45,7 @@
     h1, h2, h3 { text-wrap: balance; }
     h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.035em; }
     h1 { max-width: 780px; font-size: clamp(3.05rem, 6.4vw, 5.4rem); line-height: 1.11; margin-bottom: 1.4rem; }
-    .hero .intro { max-width: 730px; color: #f0f6f4; font-size: clamp(1.11rem, 1.8vw, 1.32rem); line-height: 1.65; }
+    .hero .intro { max-width: 730px; color: #3e5456; font-size: clamp(1.11rem, 1.8vw, 1.32rem); line-height: 1.65; }
     .hero-links { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.6rem; margin-top: 2.2rem; }
     .button { background: var(--accent-dark); color: white; border: 1px solid var(--accent-dark); display: inline-block; text-decoration: none; padding: .7rem 1.2rem; font-weight: 650; font-size: .9rem; border-radius: 4px; }
     .button:hover { color: white; background: #0e3f41; }
@@ -67,15 +58,6 @@
     .section-copy { max-width: 700px; margin-left: auto; }
     .section-copy p { color: #405558; font-size: 1.08rem; }
     .section-copy p:last-child { margin-bottom: 0; }
-    /* Portrait beside the About copy. */
-    .about-layout { display: grid; grid-template-columns: minmax(0,1fr) 230px; align-items: start; gap: 2.5rem; }
-    .about-layout .section-copy { margin-left: 0; }
-    .portrait-figure { margin: 0; }
-    .portrait-figure img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; border-radius: 5px; }
-    /* Field site image: full-width within the Research section. */
-    .fieldsite-figure { margin: 2rem 0 0; }
-    .fieldsite-figure img { display: block; width: 100%; max-height: 440px; aspect-ratio: 16 / 7; object-fit: cover; object-position: center; border-radius: 5px; }
-    .fieldsite-figure figcaption { color: var(--muted); font-size: .85rem; margin-top: .6rem; }
     .two-columns { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.25rem; }
     .research-card { background: var(--surface); border: 1px solid var(--border); border-radius: 5px; padding: 2rem; min-height: 255px; }
     .research-card:nth-child(3) { grid-column: 1 / -1; min-height: 0; }
@@ -112,10 +94,7 @@
       .site-nav { justify-content: flex-start; gap: .5rem 1rem; }
       .site-nav a { font-size: .82rem; }
       .hero { padding: 4.5rem 0 4.2rem; }
-      .about-layout { grid-template-columns: 1fr; gap: 2rem; }
-      .portrait-figure { max-width: 260px; }
-      .fieldsite-figure img { aspect-ratio: 4 / 3; }
-      .hero { background-position: center 50%; }
+      .hero::after { right: -30rem; }
       section.content { padding: 3.6rem 0; }
       .section-heading, .two-columns, .background-grid { grid-template-columns: 1fr; gap: 1.1rem; }
       .research-card:nth-child(3) { grid-column: auto; }
@@ -125,6 +104,55 @@
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     @media print { .hero::after { display: none; } .site-nav, .hero-links, .contact-links { display: none; } body { background: white; } section.content { padding: 2rem 0; } .contact { color: black; background: white; } .contact p { color: black; } }
+
+    /* ===== PHOTOS: edit these rules to change size or cropping ===== */
+    /* IMG_4597.jpg: panoramic Dominica image behind the opening text. */
+    .hero {
+      background-image: linear-gradient(90deg, rgba(12,38,40,.87) 0%, rgba(12,38,40,.64) 60%, rgba(12,38,40,.37) 100%), url("IMG_4597.jpg");
+      background-size: cover;
+      background-position: center 50%;
+      color: #fff;
+    }
+    .hero::after { display: none; }
+    .hero .eyebrow { color: #d1e7e3; }
+    .hero .intro, .hero .text-link { color: #f1f8f6; }
+    .hero .text-link:hover { color: #fff; }
+    .hero .button { background: #f4f9f6; border-color: #f4f9f6; color: #173d40; }
+    .hero .button:hover { background: #fff; color: #173d40; }
+
+    /* IMG_0076.JPG: headshot beside the About biography. */
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      align-items: start;
+      gap: 2.5rem;
+    }
+    .about-layout .section-copy { margin-left: 0; }
+    .portrait { margin: 0; }
+    .portrait img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    /* IMG_2476 2.jpg: research field-site photograph and caption. */
+    .fieldsite-photo { margin: 2rem 0 0; }
+    .fieldsite-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 8;
+      max-height: 440px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 5px;
+    }
+    .fieldsite-photo figcaption { margin-top: .65rem; font-size: .88rem; color: var(--muted); }
+    @media (max-width: 700px) {
+      .about-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+      .portrait { max-width: 260px; }
+      .fieldsite-photo img { aspect-ratio: 4 / 3; }
+    }
   </style>
 </head>
 <body>
@@ -163,11 +191,12 @@
         </div>
         <div class="about-layout">
           <div class="section-copy">
-          <p>My research sits at the intersection of evolutionary medicine, human biology, and psychoneuroimmunology. I'm especially interested in how temporally organized physiological processes—and differences among individuals—shape vulnerability to disease.</p>
-          <p>I completed my PhD in Biomedical Anthropology at Baylor University, where I studied longitudinal relationships among cortisol regulation, psychological outcomes, and traumatic experiences in Dominica. I now work in the <a href="https://sites.duke.edu/pontzerlab/" target="_blank" rel="noopener noreferrer">Pontzer Lab</a> at Duke University and coordinate the <a href="https://sites.duke.edu/pecahn/" target="_blank" rel="noopener noreferrer">Population Ecology, Aging, and Health Network (PEcAHN)</a>.</p>
+            <p>My research sits at the intersection of evolutionary medicine, human biology, and psychoneuroimmunology. I'm especially interested in how temporally organized physiological processes—and differences among individuals—shape vulnerability to disease.</p>
+            <p>I completed my PhD in Biomedical Anthropology at Baylor University, where I studied longitudinal relationships among cortisol regulation, psychological outcomes, and traumatic experiences in Dominica. I now work in the <a href="https://sites.duke.edu/pontzerlab/" target="_blank" rel="noopener noreferrer">Pontzer Lab</a> at Duke University and coordinate the <a href="https://sites.duke.edu/pecahn/" target="_blank" rel="noopener noreferrer">Population Ecology, Aging, and Health Network (PEcAHN)</a>.</p>
           </div>
-          <figure class="portrait-figure">
-            <img src="headshot.jpg" alt="Portrait of Edward S. Thum" width="460" height="575" loading="lazy">
+          <!-- Headshot: image must be in same folder as index.html. -->
+          <figure class="portrait">
+            <img src="IMG_0076.JPG" alt="Portrait of Edward S. Thum" loading="lazy">
           </figure>
         </div>
       </div>
@@ -196,8 +225,9 @@
             <p>Through <a href="https://sites.duke.edu/pecahn/" target="_blank" rel="noopener noreferrer">PEcAHN</a>, I support collaborative, multi-site research on ecology, aging, and health across diverse communities, including cross-site research coordination and data harmonization.</p>
           </article>
         </div>
-        <figure class="fieldsite-figure">
-          <img src="dominica-fieldsite.jpg" alt="Research field site in Dominica" width="1200" height="525" loading="lazy">
+        <!-- Field site: image must be in same folder as index.html. -->
+        <figure class="fieldsite-photo">
+          <img src="IMG_2476 2.jpg" alt="Research field site in Dominica" loading="lazy">
           <figcaption>Field site in Dominica.</figcaption>
         </figure>
       </div>
